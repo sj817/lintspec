@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+coverage
+.DS_Store
+*.log
+docs/.vitepress/cache
+docs/.vitepress/dist
+.playwright-cli
+*.tgz

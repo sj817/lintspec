@@ -1,0 +1,50 @@
+{
+  "name": "@qwqo/prettier-config",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "qwqo Prettier shared config.",
+  "license": "MIT",
+  "keywords": [
+    "prettier",
+    "prettier-config",
+    "prettierconfig",
+    "formatter"
+  ],
+  "homepage": "https://github.com/sj817/lintspec#readme",
+  "bugs": "https://github.com/sj817/lintspec/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sj817/lintspec.git",
+    "directory": "packages/prettier-config"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "prettier": ">=3.0.0 <4.0.0"
+  },
+  "devDependencies": {
+    "prettier": "3.8.4",
+    "tsdown": "0.22.2",
+    "typescript": "6.0.3",
+    "vitest": "4.1.8"
+  }
+}

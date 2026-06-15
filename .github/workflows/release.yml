@@ -1,0 +1,40 @@
+name: Release
+
+# 推送 v* 标签即发布（例如 git tag v0.1.1 && git push --tags）
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  id-token: write # 可信发布（OIDC）所需，无需 NPM_TOKEN
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # Node 24 自带 npm ≥ 11.5.1，原生支持可信发布，无需额外安装
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm -r build
+
+      - name: Publish to npm (trusted publishing, no token)
+        run: |
+          for pkg in eslint-config prettier-config create-config; do
+            ( cd "packages/$pkg" && npm publish --access public --ignore-scripts )
+          done

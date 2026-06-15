@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+coverage
+pnpm-lock.yaml
+docs/.vitepress/cache
+docs/.vitepress/dist
+.playwright-cli
+**/CHANGELOG.md
+docs/**/*.md

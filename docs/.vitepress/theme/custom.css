@@ -1,0 +1,487 @@
+/* ============================================================
+   Lintspec 文档站主题 —— 冷调钢蓝 / 金属冷光（呼应 naka 配色）
+   ============================================================ */
+
+:root {
+  /* 字体 */
+  --vp-font-family-base:
+    'Inter Variable', 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+
+  /* 品牌主色：天蓝 → 靛 */
+  --vp-c-brand-1: #38bdf8;
+  --vp-c-brand-2: #0ea5e9;
+  --vp-c-brand-3: #0284c7;
+  --vp-c-brand-soft: rgba(56, 189, 248, 0.14);
+
+  --vp-c-brand: var(--vp-c-brand-1);
+  --vp-c-brand-light: var(--vp-c-brand-2);
+  --vp-c-brand-lighter: var(--vp-c-brand-3);
+  --vp-c-brand-dark: var(--vp-c-brand-2);
+  --vp-c-brand-darker: var(--vp-c-brand-3);
+
+  --ls-accent: #818cf8;
+  --ls-gradient: linear-gradient(120deg, #38bdf8 0%, #818cf8 100%);
+  --ls-gradient-soft: linear-gradient(120deg, rgba(56, 189, 248, 0.12), rgba(129, 140, 248, 0.12));
+
+  /* 首页标题渐变：天蓝 → 靛蓝 */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #7dd3fc 10%, #38bdf8 50%, #818cf8 90%);
+  --vp-home-hero-image-background-image: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.35),
+    rgba(129, 140, 248, 0.25)
+  );
+  --vp-home-hero-image-filter: blur(56px);
+
+  --vp-button-brand-bg: var(--vp-c-brand-2);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-1);
+  --vp-button-brand-active-bg: var(--vp-c-brand-3);
+
+  /* 圆角 */
+  --ls-radius: 14px;
+}
+
+.dark {
+  --vp-c-bg: #0c0d11;
+  --vp-c-bg-alt: #111318;
+  --vp-c-bg-soft: #15171d;
+  --vp-c-brand-1: #38bdf8;
+  --vp-c-brand-2: #0ea5e9;
+  --vp-c-brand-3: #7dd3fc;
+  --vp-c-brand-soft: rgba(56, 189, 248, 0.16);
+  --ls-accent: #a5b4fc;
+  --ls-gradient: linear-gradient(120deg, #7dd3fc 0%, #a5b4fc 100%);
+}
+
+/* ============================================================
+   排版 —— 正文压小、标题收紧
+   ============================================================ */
+
+.vp-doc {
+  font-size: 14.5px;
+  line-height: 1.72;
+}
+
+.vp-doc p,
+.vp-doc li {
+  font-size: 14.5px;
+  line-height: 1.72;
+}
+
+.vp-doc h1 {
+  font-size: 26px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.vp-doc h2 {
+  margin-top: 40px;
+  padding-top: 20px;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.005em;
+}
+
+.vp-doc h3 {
+  margin-top: 26px;
+  font-size: 15.5px;
+  font-weight: 600;
+}
+
+/* 行内代码：品牌弱底，提升技术文档辨识度 */
+.vp-doc :not(pre) > code {
+  font-size: 0.86em;
+  background: var(--vp-c-brand-soft);
+}
+
+/* 代码块字号略收 */
+.vp-doc div[class*='language-'] code {
+  font-size: 13px;
+}
+
+/* 列表项间距收紧 */
+.vp-doc li + li {
+  margin-top: 4px;
+}
+
+/* ============================================================
+   首页冷光辉光（金属冷调）
+   ============================================================ */
+
+.VPHome {
+  position: relative;
+}
+
+.VPHome::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 520px;
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(56, 189, 248, 0.16), transparent 70%),
+    radial-gradient(40% 40% at 80% 10%, rgba(129, 140, 248, 0.12), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.VPHome .VPHero,
+.VPHome .VPFeatures,
+.VPHome .vp-doc,
+.VPHome .ls-stats {
+  position: relative;
+  z-index: 1;
+}
+
+/* 按钮渐变与悬浮发光 */
+.VPNavBarTitle .logo {
+  width: 26px;
+  height: 26px;
+}
+
+.VPHero .image-src {
+  max-width: 320px;
+  max-height: 320px;
+  filter: drop-shadow(0 24px 44px rgba(15, 23, 32, 0.22));
+}
+
+.VPHero .image-bg {
+  opacity: 0.7;
+}
+
+.VPButton.brand {
+  border: none;
+  background: var(--ls-gradient);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.VPButton.alt {
+  border: 1px solid var(--vp-c-divider);
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 70%, transparent);
+  backdrop-filter: blur(6px);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* 首页主按钮：文本靠左、箭头靠右、中间撑开 */
+.VPHero .action .VPButton.brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-width: 188px;
+}
+
+.VPHero .action .VPButton.brand::after {
+  content: '→';
+  font-size: 17px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .VPHero .action .VPButton.brand:hover::after {
+    transform: translateX(3px);
+  }
+}
+
+/* ============================================================
+   首页特性卡 —— 玻璃拟态
+   ============================================================ */
+
+.VPFeature {
+  border: 1px solid var(--vp-c-divider);
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 60%, transparent);
+  backdrop-filter: blur(10px);
+  border-radius: var(--ls-radius);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.VPFeature .icon {
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ls-gradient-soft);
+  border: 1px solid var(--vp-c-brand-soft);
+  border-radius: 12px;
+}
+
+.VPFeature .title {
+  font-weight: 650;
+}
+
+/* ============================================================
+   首页统计带
+   ============================================================ */
+
+.ls-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1152px;
+  margin: 8px auto 0;
+  padding: 0 24px;
+}
+
+.ls-stat {
+  text-align: center;
+  padding: 15px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: var(--ls-radius);
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 55%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.ls-stat .num {
+  font-family: var(--vp-font-family-mono);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.1;
+  background: var(--ls-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.ls-stat .label {
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: var(--vp-c-text-2);
+}
+
+@media (max-width: 640px) {
+  .ls-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
+   ❌/✅ 示例容器
+   ============================================================ */
+
+.ls-example {
+  position: relative;
+  margin: 16px 0;
+  padding: 0 0 0 14px;
+  border-left: 3px solid var(--ls-edge);
+}
+
+.ls-example.ls-bad {
+  --ls-edge: #ef4444;
+}
+
+.ls-example.ls-good {
+  --ls-edge: #10b981;
+}
+
+.ls-example.ls-before {
+  --ls-edge: #94a3b8;
+}
+
+.ls-example.ls-after {
+  --ls-edge: #38bdf8;
+}
+
+.ls-example-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0 -4px 2px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ls-edge);
+}
+
+.ls-example-label::before {
+  font-weight: 700;
+}
+
+.ls-example.ls-bad .ls-example-label::before {
+  content: '✗';
+}
+
+.ls-example.ls-good .ls-example-label::before {
+  content: '✓';
+}
+
+.ls-example.ls-before .ls-example-label::before {
+  content: '○';
+}
+
+.ls-example.ls-after .ls-example-label::before {
+  content: '✦';
+}
+
+/* 代码块保留默认灰底 + 边框 + 圆角，与彩色卡形成清晰层次（卡 → 灰代码块） */
+.vp-doc .ls-example div[class*='language-'] {
+  margin: 4px 0 0;
+}
+
+.ls-example .ls-example-label {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   能力徽章 chip（标题里的 🔧 💡）
+   ============================================================ */
+
+.ls-cap {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  border-radius: 999px;
+  background: var(--vp-c-brand-soft);
+  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1) 25%, transparent);
+}
+
+/* ============================================================
+   表格美化
+   ============================================================ */
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+}
+
+.vp-doc tr {
+  transition: background-color 0.15s ease;
+}
+
+/* 表头冻结：滚动长表（规则参考）时吸附在导航栏下方，背景不透明 */
+.vp-doc thead th {
+  position: sticky;
+  top: var(--vp-nav-height);
+  z-index: 2;
+  background: var(--ls-gradient-soft), var(--vp-c-bg);
+  font-weight: 650;
+}
+
+.vp-doc tbody tr:nth-child(2n) {
+  background: var(--vp-c-bg-soft);
+}
+
+.vp-doc tbody tr:hover {
+  background: var(--vp-c-brand-soft);
+}
+
+.vp-doc td code,
+.vp-doc th code {
+  font-size: 12px;
+}
+
+/* 级别徽章 */
+.ls-sev {
+  display: inline-block;
+  padding: 1px 9px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.7;
+  white-space: nowrap;
+  border-radius: 999px;
+}
+
+.ls-sev-error {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+}
+
+.ls-sev-warn {
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.16);
+}
+
+.dark .ls-sev-error {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.16);
+}
+
+.dark .ls-sev-warn {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.18);
+}
+
+/* ============================================================
+   代码块 / 行内代码微调
+   ============================================================ */
+
+.vp-doc div[class*='language-'] {
+  border-radius: var(--ls-radius);
+  border: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc :not(pre) > code {
+  border-radius: 6px;
+}
+
+/* 关闭代码连字，确保 == 与 ===、!= 与 !==、=> 等清晰可辨 */
+.vp-doc [class*='language-'],
+.vp-doc code,
+.VPHero code {
+  font-variant-ligatures: none;
+  font-feature-settings:
+    'liga' 0,
+    'calt' 0;
+}
+
+/* ============================================================
+   微动效（尊重 reduce-motion）
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  .VPFeature:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -12px rgba(56, 189, 248, 0.4);
+    border-color: color-mix(in srgb, var(--vp-c-brand-1) 35%, var(--vp-c-divider));
+  }
+
+  .VPButton.brand:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px -8px rgba(56, 189, 248, 0.6);
+    filter: saturate(1.1);
+  }
+
+  .VPButton.alt:hover {
+    transform: translateY(-1px);
+    border-color: var(--vp-c-brand-1);
+  }
+
+  .ls-stat {
+    transition:
+      transform 0.22s ease,
+      border-color 0.22s ease;
+  }
+
+  .ls-stat:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--vp-c-brand-1) 35%, var(--vp-c-divider));
+  }
+
+  .VPHero .name .clip {
+    background-size: 200% 200%;
+    animation: ls-hero-flow 8s ease infinite;
+  }
+
+  @keyframes ls-hero-flow {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}

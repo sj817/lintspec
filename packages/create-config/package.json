@@ -1,0 +1,46 @@
+{
+  "name": "create-qwqo-config",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Scaffold qwqo ESLint + Prettier config interactively.",
+  "license": "MIT",
+  "keywords": [
+    "create",
+    "eslint",
+    "prettier",
+    "config",
+    "scaffold",
+    "qwqo"
+  ],
+  "homepage": "https://github.com/sj817/lintspec#readme",
+  "bugs": "https://github.com/sj817/lintspec/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sj817/lintspec.git",
+    "directory": "packages/create-config"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "create-qwqo-config": "./dist/index.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.5",
+    "tsdown": "0.22.2",
+    "typescript": "6.0.3",
+    "vitest": "4.1.8"
+  },
+  "dependencies": {
+    "@clack/prompts": "1.5.1"
+  }
+}

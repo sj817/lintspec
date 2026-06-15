@@ -1,0 +1,66 @@
+{
+  "name": "@qwqo/eslint-config",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "qwqo ESLint shared config.",
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "eslintconfig",
+    "flat-config",
+    "typescript",
+    "unicorn"
+  ],
+  "homepage": "https://github.com/sj817/lintspec#readme",
+  "bugs": "https://github.com/sj817/lintspec/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sj817/lintspec.git",
+    "directory": "packages/eslint-config"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "gen:rules": "node gen-rule-reference.mjs",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "eslint": ">=10.0.0 <11.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.5",
+    "eslint": "10.4.1",
+    "tsdown": "0.22.2",
+    "typescript": "6.0.3",
+    "vitest": "4.1.8"
+  },
+  "dependencies": {
+    "@eslint-react/eslint-plugin": "5.9.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import-x": "4.16.2",
+    "eslint-plugin-perfectionist": "5.9.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-unicorn": "65.0.1",
+    "eslint-plugin-vue": "10.9.2",
+    "globals": "17.6.0",
+    "typescript-eslint": "8.61.0",
+    "vue-eslint-parser": "10.4.1"
+  }
+}
